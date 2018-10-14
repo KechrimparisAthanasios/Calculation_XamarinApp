@@ -5,13 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9B61FD42-1EC9-4D3E-9525-C9ED3A1FCB32}</ProjectGuid>
+    <ProjectGuid>{58582AFD-9796-47AC-A998-37FA546D2AE5}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Calculation_Mobile_App.iOS</RootNamespace>
+    <RootNamespace>Mobile.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>Calculation_Mobile_App.iOS</AssemblyName>
+    <AssemblyName>Mobile.iOS</AssemblyName>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -152,9 +152,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Calculation_Mobile_App\Calculation_Mobile_App.csproj">
-      <Project>{B9EA38CA-80B7-409E-BFC3-0014D3DF7515}</Project>
-      <Name>Calculation_Mobile_App</Name>
+    <ProjectReference Include="..\Mobile\Mobile.csproj">
+      <Project>{19146689-E54E-4D8E-8DF1-C86615186C33}</Project>
+      <Name>Mobile</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

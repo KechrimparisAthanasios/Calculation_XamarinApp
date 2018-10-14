@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MathParser.org-mXparser.Net461">
+      <HintPath>..\..\..\..\..\Documents\Code Repository\Repos\MxParser_Test\MxParser_Test\bin\Debug\MathParser.org-mXparser.Net461.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

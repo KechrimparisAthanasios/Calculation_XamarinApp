@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Mobile"
+             x:Class="Mobile.MainPage" BackgroundColor="DodgerBlue" BindingContext="CalculationViewModel">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BtnStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="Green"/>
+                <Setter Property="CornerRadius" Value="20"/>
+                <Setter Property="BackgroundColor" Value="Black"/>
+                <Setter Property="FontAttributes" Value="Italic"/>
+            </Style>
+            <Style x:Key="EqualBtnStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="CornerRadius" Value="20"/>
+                <Setter Property="BackgroundColor" Value="Green"/>
+                <Setter Property="FontAttributes" Value="Italic"/>
+            </Style>
+            <Style x:Key="AllClearBtnStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="CornerRadius" Value="20"/>
+                <Setter Property="BackgroundColor" Value="Red"/>
+                <Setter Property="FontAttributes" Value="Italic"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="30*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" TextColor="Green"  FontSize="48" Text="{Binding Result, Mode=TwoWay, UpdateSourceEventName=PropertyChanged}" BackgroundColor="Black"/>
+            <Label Grid.Row="1" Grid.Column="0" BackgroundColor="White" Text="{Binding FormulaLbl, Mode=TwoWay, UpdateSourceEventName=PropertyChanged}" TextColor="Black"/>
+            <StackLayout Grid.Row="2" Grid.Column="0" x:Name="KeyboardPanel" BackgroundColor="DodgerBlue" VerticalOptions="StartAndExpand">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="SevenBtn" Style="{StaticResource BtnStyle}" Text="7" Grid.Row="0" Grid.Column="0" Clicked="SevenBtn_OnClicked"/>
+                    <Button x:Name="EightBtn" Style="{StaticResource BtnStyle}" Text="8" Grid.Row="0" Grid.Column="1" Clicked="EightBtn_OnClicked" />
+                    <Button x:Name="NineBtn" Style="{StaticResource BtnStyle}" Text="9" Grid.Row="0" Grid.Column="2" Clicked="NineBtn_OnClicked"/>
+                    <Button x:Name="FourBtn" Style="{StaticResource BtnStyle}" Text="4" Grid.Row="1" Grid.Column="0" Clicked="FourBtn_OnClicked" />
+                    <Button x:Name="FiveBtn" Style="{StaticResource BtnStyle}" Text="5" Grid.Row="1" Grid.Column="1" Clicked="FiveBtn_OnClicked" />
+                    <Button x:Name="SixBtn" Style="{StaticResource BtnStyle}" Text="6" Grid.Row="1" Grid.Column="2" Clicked="SixBtn_OnClicked"/>
+                    <Button x:Name="OneBtn" Style="{StaticResource BtnStyle}" Text="1" Grid.Row="2" Grid.Column="0" Clicked="OneBtn_OnClicked" />
+                    <Button x:Name="TwoBtn" Style="{StaticResource BtnStyle}" Text="2" Grid.Row="2" Grid.Column="1" Clicked="TwoBtn_OnClicked" />
+                    <Button x:Name="ThreeBtn" Style="{StaticResource BtnStyle}" Text="3" Grid.Row="2" Grid.Column="2" Clicked="ThreeBtn_OnClicked" />
+                    <Button x:Name="CommaBtn" Style="{StaticResource BtnStyle}" Text="," Grid.Row="3" Grid.Column="0" Clicked="CommaBtn_OnClicked" />
+                    <Button x:Name="ZeroBtn" Style="{StaticResource BtnStyle}" Text="0" Grid.Row="3" Grid.Column="1" Clicked="ZeroBtn_OnClicked"/>
+                    <Button x:Name="CancelBtn" Style="{StaticResource BtnStyle}" Text="C" Grid.Row="3" Grid.Column="2" Clicked="CancelBtn_OnClicked" />
+
+                    <Button x:Name="DividedBtn" Style="{StaticResource BtnStyle}" Text="/" Grid.Row="0" Grid.Column="3" Clicked="DividedBtn_OnClicked" />
+                    <Button x:Name="MultipleBtn" Style="{StaticResource BtnStyle}" Text="*" Grid.Row="1" Grid.Column="3" Clicked="MultipleBtn_OnClicked" />
+                    <Button x:Name="MinusBtn" Style="{StaticResource BtnStyle}" Text="-" Grid.Row="2" Grid.Column="3" Clicked="MinusBtn_OnClicked" />
+                    <Button x:Name="PlusBtn" Style="{StaticResource BtnStyle}" Text="+" Grid.Row="3" Grid.Column="3" Clicked="PlusBtn_OnClicked" />
+
+                    <Button x:Name="EqualBtn" Style="{StaticResource EqualBtnStyle}" Text="=" Grid.Row="2" Grid.Column="4" Clicked="EqualBtn_OnClicked" />
+                    <Button x:Name="AllClearBtn" Style="{StaticResource AllClearBtnStyle}" Text="AC" Grid.Row="3" Grid.Column="4" Clicked="AllClearBtn_OnClicked" />
+                </Grid>
+            </StackLayout>
+        </Grid>
+    </StackLayout>
+
+</ContentPage>
