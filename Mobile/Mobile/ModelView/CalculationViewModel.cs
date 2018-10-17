@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Linq;
 
 namespace Mobile.ModelView
 {
@@ -10,16 +11,21 @@ namespace Mobile.ModelView
     {
         #region Properties
 
+        private Dictionary<char, int> dictiOfMathSymbol = new Dictionary<char, int>()
+        {
+            {'+',0 },
+            {'-',1 },
+            {'*',2 },
+            {'/',2 }
+        };
+        
+
         private string _formulaLbl;
 
         public string FormulaLbl
         {
             get { return _formulaLbl; }
-            set
-            {
-                _formulaLbl = value;
-                NotifyPropertyChanged("FormulaLbl");
-            }
+            set{ _formulaLbl = value; NotifyPropertyChanged("FormulaLbl");}
         }
 
         private string _result;
@@ -30,13 +36,27 @@ namespace Mobile.ModelView
             set { _result = value; NotifyPropertyChanged("Result"); }
         }
 
+        private bool _isSimpleKeyboardEnable;
+
+        public bool IsSimpleKeyBoardVisible
+        {
+            get { return _isSimpleKeyboardEnable;}
+            set { _isSimpleKeyboardEnable = value; NotifyPropertyChanged("IsSimpleKeyBoardVisible"); }
+        }
+
+        private bool _isScientificKeyboardEnable;
+
+        public bool IsScienteficVisible
+        {
+            get { return _isScientificKeyboardEnable; }
+            set { _isScientificKeyboardEnable = value; NotifyPropertyChanged("IsScienteficVisible"); }
+        }
         #endregion
 
         #region Constructor
 
         public CalculationViewModel()
-        {
-        }
+        {}
 
         #endregion
 
@@ -60,8 +80,83 @@ namespace Mobile.ModelView
                     }
 
                     break;
+                case "Sin":
+                    if (String.IsNullOrEmpty(FormulaLbl))
+                    {
+                        FormulaLbl = FormulaLbl + "sin()";
+                    }
+                    else if(!String.IsNullOrEmpty(FormulaLbl))
+                    {
+                        if (FormulaLbl.Contains("sin"))
+                        {
+                            if (value.Contains("sin"))
+                            {
+                                value = value.Remove(value.Length - 1);
+                                FormulaLbl = FormulaLbl.Remove(FormulaLbl.Length - 1) + ")";
+                            }
+                            else if (!value.Contains("sin"))
+                            {
+                                FormulaLbl = FormulaLbl.Remove(FormulaLbl.Length - 1) + value + ")";
+                            }
+
+                            char lastCharOfFormula = FormulaLbl[FormulaLbl.Length - 1];
+                            foreach (var pair in dictiOfMathSymbol)
+                            {
+                                if (lastCharOfFormula == pair.Key)
+                                {
+                                    FormulaLbl = FormulaLbl + "sin()";
+                                    break;
+                                }
+                                else
+                                {
+                                    FormulaLbl = FormulaLbl + "*sin()";
+                                    break;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            char lastCharOfFormula = FormulaLbl[FormulaLbl.Length - 1];
+                            foreach (var pair in dictiOfMathSymbol)
+                            {
+                                if (lastCharOfFormula == pair.Key)
+                                {
+                                    FormulaLbl = FormulaLbl + "sin()";
+                                    break;
+                                }
+                                else
+                                {
+                                    FormulaLbl = FormulaLbl + "*sin()";
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    break;
                 default:
-                    FormulaLbl = FormulaLbl + value;
+                    if (FormulaLbl.Contains("sin"))
+                    {
+                        if (value.Contains(")"))
+                        {
+                            value = value.Remove(value.Length - 1);
+                            FormulaLbl = FormulaLbl.Remove(FormulaLbl.Length - 1) + ")";
+                        }
+                        else if(!value.Contains(")"))
+                        {
+                            FormulaLbl = FormulaLbl.Remove(FormulaLbl.Length - 1) + value + ")";
+                        }
+                        else
+                        {
+                            FormulaLbl = FormulaLbl + value;
+                        }
+                        
+                    }
+                    else
+                    {
+                        FormulaLbl = FormulaLbl + value;
+                    }
+                    
+                    
                     break;
             }
         }

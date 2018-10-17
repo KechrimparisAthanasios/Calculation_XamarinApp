@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <Reference Include="MathParser.org-mXparser.Net461">
-      <HintPath>..\..\..\..\..\Documents\Code Repository\Repos\MxParser_Test\MxParser_Test\bin\Debug\MathParser.org-mXparser.Net461.dll</HintPath>
+      <HintPath>References\MathParser.org-mXparser.Net461.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

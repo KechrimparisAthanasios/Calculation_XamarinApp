@@ -26,57 +26,149 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-
     <StackLayout>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="60*" />
-                <RowDefinition Height="10*" />
-                <RowDefinition Height="30*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" TextColor="Green"  FontSize="48" Text="{Binding Result, Mode=TwoWay, UpdateSourceEventName=PropertyChanged}" BackgroundColor="Black"/>
-            <Label Grid.Row="1" Grid.Column="0" BackgroundColor="White" Text="{Binding FormulaLbl, Mode=TwoWay, UpdateSourceEventName=PropertyChanged}" TextColor="Black"/>
-            <StackLayout Grid.Row="2" Grid.Column="0" x:Name="KeyboardPanel" BackgroundColor="DodgerBlue" VerticalOptions="StartAndExpand">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Button x:Name="SevenBtn" Style="{StaticResource BtnStyle}" Text="7" Grid.Row="0" Grid.Column="0" Clicked="SevenBtn_OnClicked"/>
-                    <Button x:Name="EightBtn" Style="{StaticResource BtnStyle}" Text="8" Grid.Row="0" Grid.Column="1" Clicked="EightBtn_OnClicked" />
-                    <Button x:Name="NineBtn" Style="{StaticResource BtnStyle}" Text="9" Grid.Row="0" Grid.Column="2" Clicked="NineBtn_OnClicked"/>
-                    <Button x:Name="FourBtn" Style="{StaticResource BtnStyle}" Text="4" Grid.Row="1" Grid.Column="0" Clicked="FourBtn_OnClicked" />
-                    <Button x:Name="FiveBtn" Style="{StaticResource BtnStyle}" Text="5" Grid.Row="1" Grid.Column="1" Clicked="FiveBtn_OnClicked" />
-                    <Button x:Name="SixBtn" Style="{StaticResource BtnStyle}" Text="6" Grid.Row="1" Grid.Column="2" Clicked="SixBtn_OnClicked"/>
-                    <Button x:Name="OneBtn" Style="{StaticResource BtnStyle}" Text="1" Grid.Row="2" Grid.Column="0" Clicked="OneBtn_OnClicked" />
-                    <Button x:Name="TwoBtn" Style="{StaticResource BtnStyle}" Text="2" Grid.Row="2" Grid.Column="1" Clicked="TwoBtn_OnClicked" />
-                    <Button x:Name="ThreeBtn" Style="{StaticResource BtnStyle}" Text="3" Grid.Row="2" Grid.Column="2" Clicked="ThreeBtn_OnClicked" />
-                    <Button x:Name="CommaBtn" Style="{StaticResource BtnStyle}" Text="," Grid.Row="3" Grid.Column="0" Clicked="CommaBtn_OnClicked" />
-                    <Button x:Name="ZeroBtn" Style="{StaticResource BtnStyle}" Text="0" Grid.Row="3" Grid.Column="1" Clicked="ZeroBtn_OnClicked"/>
-                    <Button x:Name="CancelBtn" Style="{StaticResource BtnStyle}" Text="C" Grid.Row="3" Grid.Column="2" Clicked="CancelBtn_OnClicked" />
+        <StackLayout x:Name="KeyboardOption">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="33*" />
+                    <ColumnDefinition Width="33*" />
+                    <ColumnDefinition Width="33*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" Grid.Column="1" Text="Scientific" x:Name="ScientificKeyboard" Clicked="ScientificKeyboard_OnClicked"/>
+                <Button Grid.Row="0" Grid.Column="2" Text="Normal" x:Name="NormalKeyboard" Clicked="NormalKeyboard_OnClicked"/>
+            </Grid>
+        </StackLayout>
+        <StackLayout x:Name="SimpleKeyboardLayout" IsVisible="{Binding IsSimpleKeyBoardVisible, Mode=TwoWay, UpdateSourceEventName=PropertyChanged}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60*" />
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="30*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" TextColor="Green"  FontSize="48" Text="{Binding Result, Mode=TwoWay, UpdateSourceEventName=PropertyChanged}" BackgroundColor="Black"/>
+                <Label Grid.Row="1" Grid.Column="0" BackgroundColor="White" Text="{Binding FormulaLbl, Mode=TwoWay, UpdateSourceEventName=PropertyChanged}" TextColor="Black"/>
+                <StackLayout Grid.Row="2" Grid.Column="0" x:Name="SimpleKeyboardPanel" BackgroundColor="DodgerBlue" VerticalOptions="StartAndExpand">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="SevenBtn" Style="{StaticResource BtnStyle}" Text="7" Grid.Row="0" Grid.Column="0" Clicked="SevenBtn_OnClicked"/>
+                        <Button x:Name="EightBtn" Style="{StaticResource BtnStyle}" Text="8" Grid.Row="0" Grid.Column="1" Clicked="EightBtn_OnClicked" />
+                        <Button x:Name="NineBtn" Style="{StaticResource BtnStyle}" Text="9" Grid.Row="0" Grid.Column="2" Clicked="NineBtn_OnClicked"/>
+                        <Button x:Name="FourBtn" Style="{StaticResource BtnStyle}" Text="4" Grid.Row="1" Grid.Column="0" Clicked="FourBtn_OnClicked" />
+                        <Button x:Name="FiveBtn" Style="{StaticResource BtnStyle}" Text="5" Grid.Row="1" Grid.Column="1" Clicked="FiveBtn_OnClicked" />
+                        <Button x:Name="SixBtn" Style="{StaticResource BtnStyle}" Text="6" Grid.Row="1" Grid.Column="2" Clicked="SixBtn_OnClicked"/>
+                        <Button x:Name="OneBtn" Style="{StaticResource BtnStyle}" Text="1" Grid.Row="2" Grid.Column="0" Clicked="OneBtn_OnClicked" />
+                        <Button x:Name="TwoBtn" Style="{StaticResource BtnStyle}" Text="2" Grid.Row="2" Grid.Column="1" Clicked="TwoBtn_OnClicked" />
+                        <Button x:Name="ThreeBtn" Style="{StaticResource BtnStyle}" Text="3" Grid.Row="2" Grid.Column="2" Clicked="ThreeBtn_OnClicked" />
+                        <Button x:Name="CommaBtn" Style="{StaticResource BtnStyle}" Text="," Grid.Row="3" Grid.Column="0" Clicked="CommaBtn_OnClicked" />
+                        <Button x:Name="ZeroBtn" Style="{StaticResource BtnStyle}" Text="0" Grid.Row="3" Grid.Column="1" Clicked="ZeroBtn_OnClicked"/>
+                        <Button x:Name="CancelBtn" Style="{StaticResource BtnStyle}" Text="C" Grid.Row="3" Grid.Column="2" Clicked="CancelBtn_OnClicked" />
 
-                    <Button x:Name="DividedBtn" Style="{StaticResource BtnStyle}" Text="/" Grid.Row="0" Grid.Column="3" Clicked="DividedBtn_OnClicked" />
-                    <Button x:Name="MultipleBtn" Style="{StaticResource BtnStyle}" Text="*" Grid.Row="1" Grid.Column="3" Clicked="MultipleBtn_OnClicked" />
-                    <Button x:Name="MinusBtn" Style="{StaticResource BtnStyle}" Text="-" Grid.Row="2" Grid.Column="3" Clicked="MinusBtn_OnClicked" />
-                    <Button x:Name="PlusBtn" Style="{StaticResource BtnStyle}" Text="+" Grid.Row="3" Grid.Column="3" Clicked="PlusBtn_OnClicked" />
+                        <Button x:Name="DividedBtn" Style="{StaticResource BtnStyle}" Text="/" Grid.Row="0" Grid.Column="3" Clicked="DividedBtn_OnClicked" />
+                        <Button x:Name="MultipleBtn" Style="{StaticResource BtnStyle}" Text="*" Grid.Row="1" Grid.Column="3" Clicked="MultipleBtn_OnClicked" />
+                        <Button x:Name="MinusBtn" Style="{StaticResource BtnStyle}" Text="-" Grid.Row="2" Grid.Column="3" Clicked="MinusBtn_OnClicked" />
+                        <Button x:Name="PlusBtn" Style="{StaticResource BtnStyle}" Text="+" Grid.Row="3" Grid.Column="3" Clicked="PlusBtn_OnClicked" />
 
-                    <Button x:Name="EqualBtn" Style="{StaticResource EqualBtnStyle}" Text="=" Grid.Row="2" Grid.Column="4" Clicked="EqualBtn_OnClicked" />
-                    <Button x:Name="AllClearBtn" Style="{StaticResource AllClearBtnStyle}" Text="AC" Grid.Row="3" Grid.Column="4" Clicked="AllClearBtn_OnClicked" />
-                </Grid>
-            </StackLayout>
-        </Grid>
+                        <Button x:Name="EqualBtn" Style="{StaticResource EqualBtnStyle}" Text="=" Grid.Row="2" Grid.Column="4" Clicked="EqualBtn_OnClicked" />
+                        <Button x:Name="AllClearBtn" Style="{StaticResource AllClearBtnStyle}" Text="AC" Grid.Row="3" Grid.Column="4" Clicked="AllClearBtn_OnClicked" />
+                    </Grid>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+        <StackLayout x:Name="ScienteficKeyboardLayout" IsVisible="{Binding IsScienteficVisible, Mode=TwoWay, UpdateSourceEventName=PropertyChanged}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20*" />
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="70*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" TextColor="Green"  FontSize="48" Text="{Binding Result, Mode=TwoWay, UpdateSourceEventName=PropertyChanged}" BackgroundColor="Black"/>
+                <Label Grid.Row="1" Grid.Column="0" BackgroundColor="White" Text="{Binding FormulaLbl, Mode=TwoWay, UpdateSourceEventName=PropertyChanged}" TextColor="Black"/>
+                <StackLayout Grid.Row="2" Grid.Column="0" x:Name="ScieKeyboardPanel" BackgroundColor="DodgerBlue" VerticalOptions="StartAndExpand">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="ScieInvBtn" Style="{StaticResource BtnStyle}" Text="Inv" Grid.Row="0" Grid.Column="0" Clicked="ScieInvBtn_OnClicked"/>
+                        <Button x:Name="ScieSinBtn" Style="{StaticResource BtnStyle}" Text="Sin" Grid.Row="0" Grid.Column="1" Clicked="ScieSinBtn_OnClicked"/>
+                        <Button x:Name="ScieInBtn" Style="{StaticResource BtnStyle}" Text="In" Grid.Row="0" Grid.Column="2" Clicked="ScieInBtn_OnClicked"/>
+                        <Button x:Name="SciePBtn" Style="{StaticResource BtnStyle}" Text="π" Grid.Row="0" Grid.Column="3" Clicked="SciePBtn_OnClicked"/>
+                        <Button x:Name="ScieCosBtn" Style="{StaticResource BtnStyle}" Text="Cos" Grid.Row="0" Grid.Column="4" Clicked="ScieCosBtn_OnClicked"/>
+
+                        <Button x:Name="ScieLogBtn" Style="{StaticResource BtnStyle}" Text="log" Grid.Row="1" Grid.Column="0" Clicked="ScieLogBtn_OnClicked"/>
+                        <Button x:Name="ScieEBtn" Style="{StaticResource BtnStyle}" Text="e" Grid.Row="1" Grid.Column="1" Clicked="ScieEBtn_OnClicked"/>
+                        <Button x:Name="ScieTanBtn" Style="{StaticResource BtnStyle}" Text="tan" Grid.Row="1" Grid.Column="2" Clicked="ScieTanBtn_OnClicked"/>
+                        <Button x:Name="ScieSquareRootBtn" Style="{StaticResource BtnStyle}" Text="√" Grid.Row="1" Grid.Column="3" Clicked="ScieSquareRootBtn_OnClicked"/>
+                        <Button x:Name="ScieAnsBtn" Style="{StaticResource BtnStyle}" Text="Ans" Grid.Row="1" Grid.Column="4" Clicked="ScieAnsBtn_OnClicked"/>
+
+                        <Button x:Name="ScieExpBtn" Style="{StaticResource BtnStyle}" Text="EXP" Grid.Row="2" Grid.Column="0" Clicked="ScieEXPBtn_OnClicked"/>
+                        <Button x:Name="SciePowertn" Style="{StaticResource BtnStyle}" Text="xy" Grid.Row="2" Grid.Column="1" Clicked="SciePowertn_OnClicked"/>
+                        <Button x:Name="ScieXBtn" Style="{StaticResource BtnStyle}" Text="x!" Grid.Row="2" Grid.Column="2" Clicked="ScieX_Btn_OnClicked"/>
+                        <Button x:Name="ScieRadBtn" Style="{StaticResource BtnStyle}" Text="Rad" Grid.Row="2" Grid.Column="3" Clicked="ScieRadBtn_OnClicked"/>
+                        <Button x:Name="ScieDegBtn" Style="{StaticResource BtnStyle}" Text="Deg" Grid.Row="2" Grid.Column="4" Clicked="ScieDegBtn_OnClicked"/>
+
+                        <Button x:Name="ScieLeftPareBtn" Style="{StaticResource BtnStyle}" Text="(" Grid.Row="3" Grid.Column="0" Clicked="ScieLeftPareBtn_OnClicked"/>
+                        <Button x:Name="ScieRightPareBtn" Style="{StaticResource BtnStyle}" Text=")" Grid.Row="3" Grid.Column="1" Clicked="ScieRightPareBtn_OnClicked"/>
+                        <Button x:Name="SciePercentageBtn" Style="{StaticResource BtnStyle}" Text="%" Grid.Row="3" Grid.Column="2" Clicked="SciePercentageBtn_OnClicked"/>
+
+                        <Button x:Name="ScieSevenBtn" Style="{StaticResource BtnStyle}" Text="7" Grid.Row="4" Grid.Column="0" Clicked="ScieSevenBtn_OnClicked"/>
+                        <Button x:Name="ScieEightBtn" Style="{StaticResource BtnStyle}" Text="8" Grid.Row="4" Grid.Column="1" Clicked="ScieEightBtn_OnClicked" />
+                        <Button x:Name="ScieNineBtn" Style="{StaticResource BtnStyle}" Text="9" Grid.Row="4" Grid.Column="2" Clicked="ScieNineBtn_OnClicked"/>
+                        <Button x:Name="ScieFourBtn" Style="{StaticResource BtnStyle}" Text="4" Grid.Row="5" Grid.Column="0" Clicked="ScieFourBtn_OnClicked" />
+                        <Button x:Name="ScieFiveBtn" Style="{StaticResource BtnStyle}" Text="5" Grid.Row="5" Grid.Column="1" Clicked="ScieFiveBtn_OnClicked" />
+                        <Button x:Name="ScieSixBtn" Style="{StaticResource BtnStyle}" Text="6" Grid.Row="5" Grid.Column="2" Clicked="ScieSixBtn_OnClicked"/>
+                        <Button x:Name="ScieOneBtn" Style="{StaticResource BtnStyle}" Text="1" Grid.Row="6" Grid.Column="0" Clicked="ScieOneBtn_OnClicked" />
+                        <Button x:Name="ScieTwoBtn" Style="{StaticResource BtnStyle}" Text="2" Grid.Row="6" Grid.Column="1" Clicked="ScieTwoBtn_OnClicked" />
+                        <Button x:Name="ScieThreeBtn" Style="{StaticResource BtnStyle}" Text="3" Grid.Row="6" Grid.Column="2" Clicked="ScieThreeBtn_OnClicked" />
+                        <Button x:Name="ScieCommaBtn" Style="{StaticResource BtnStyle}" Text="," Grid.Row="7" Grid.Column="0" Clicked="ScieCommaBtn_OnClicked" />
+                        <Button x:Name="ScieZeroBtn" Style="{StaticResource BtnStyle}" Text="0" Grid.Row="7" Grid.Column="1" Clicked="ScieZeroBtn_OnClicked"/>
+                        <Button x:Name="ScieCancelBtn" Style="{StaticResource BtnStyle}" Text="C" Grid.Row="7" Grid.Column="2" Clicked="ScieCancelBtn_OnClicked" />
+
+                        <Button x:Name="ScieDividedBtn" Style="{StaticResource BtnStyle}" Text="/" Grid.Row="1" Grid.Column="3" Clicked="ScieDividedBtn_OnClicked" />
+                        <Button x:Name="ScieMultipleBtn" Style="{StaticResource BtnStyle}" Text="*" Grid.Row="2" Grid.Column="3" Clicked="ScieMultipleBtn_OnClicked" />
+                        <Button x:Name="ScieMinusBtn" Style="{StaticResource BtnStyle}" Text="-" Grid.Row="3" Grid.Column="3" Clicked="ScieMinusBtn_OnClicked" />
+                        <Button x:Name="SciePlusBtn" Style="{StaticResource BtnStyle}" Text="+" Grid.Row="4" Grid.Column="3" Clicked="SciePlusBtn_OnClicked" />
+
+                        <Button x:Name="ScieEqualBtn" Style="{StaticResource EqualBtnStyle}" Text="=" Grid.Row="3" Grid.Column="4" Clicked="ScieEqualBtn_OnClicked" />
+                        <Button x:Name="ScieAllClearBtn" Style="{StaticResource AllClearBtnStyle}" Text="AC" Grid.Row="4" Grid.Column="4" Clicked="ScieAllClearBtn_OnClicked" />
+                    </Grid>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
     </StackLayout>
 
 </ContentPage>
