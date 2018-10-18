@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Mobile.ModelView;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace Mobile
 {
@@ -25,18 +27,21 @@ namespace Mobile
 
         #endregion
 
-        #region Option Buttons
+        #region Option Keyboard
 
-        private void NormalKeyboard_OnClicked(object sender, EventArgs e)
+        private void SwitchKeyboard_OnToggled(object sender, ToggledEventArgs e)
         {
-            _calculationView.IsScienteficVisible = false;
-            _calculationView.IsSimpleKeyBoardVisible = true;
-        }
-
-        private void ScientificKeyboard_OnClicked(object sender, EventArgs e)
-        {
-            _calculationView.IsScienteficVisible = true;
-            _calculationView.IsSimpleKeyBoardVisible = false;
+            var issd = (Switch)sender;
+            if (issd.IsToggled)
+            {
+                _calculationView.IsScienteficVisible = true;
+                _calculationView.IsSimpleKeyBoardVisible = false;
+            }
+            else
+            {
+                _calculationView.IsScienteficVisible = false;
+                _calculationView.IsSimpleKeyBoardVisible = true;
+            }
         }
 
         #endregion
@@ -318,8 +323,5 @@ namespace Mobile
         }
 
         #endregion
-
-
-
     }
 }
