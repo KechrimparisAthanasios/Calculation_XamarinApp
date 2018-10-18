@@ -36,11 +36,13 @@ namespace Mobile
             {
                 _calculationView.IsScienteficVisible = true;
                 _calculationView.IsSimpleKeyBoardVisible = false;
+                _calculationView.AddToFormula("AC");
             }
             else
             {
                 _calculationView.IsScienteficVisible = false;
                 _calculationView.IsSimpleKeyBoardVisible = true;
+                _calculationView.AddToFormula("AC");
             }
         }
 

@@ -18,15 +18,20 @@ namespace Mobile.ModelView
             {'*',2 },
             {'/',2 }
         };
-        
+
+        public string S { get; set; } = "0";
 
         private string _formulaLbl;
 
         public string FormulaLbl
         {
             get { return _formulaLbl; }
-            set{ _formulaLbl = value; NotifyPropertyChanged("FormulaLbl");}
-        }
+            set
+            {
+                _formulaLbl = value;
+                NotifyPropertyChanged("FormulaLbl");
+            }
+        } 
 
         private string _result;
 
@@ -70,6 +75,7 @@ namespace Mobile.ModelView
                     if (!String.IsNullOrEmpty(FormulaLbl))
                     {
                         FormulaLbl = "";
+                        Result = "";
                     }
 
                     break;
@@ -77,6 +83,11 @@ namespace Mobile.ModelView
                     if (!String.IsNullOrEmpty(FormulaLbl))
                     {
                         FormulaLbl = FormulaLbl.Remove(FormulaLbl.Length - 1);
+                        Calculate();
+                    }
+                    else
+                    {
+                        FormulaLbl = "0";
                     }
 
                     break;
@@ -134,27 +145,27 @@ namespace Mobile.ModelView
                     }
                     break;
                 default:
-                    if (FormulaLbl.Contains("sin"))
-                    {
-                        if (value.Contains(")"))
-                        {
-                            value = value.Remove(value.Length - 1);
-                            FormulaLbl = FormulaLbl.Remove(FormulaLbl.Length - 1) + ")";
-                        }
-                        else if(!value.Contains(")"))
-                        {
-                            FormulaLbl = FormulaLbl.Remove(FormulaLbl.Length - 1) + value + ")";
-                        }
-                        else
-                        {
-                            FormulaLbl = FormulaLbl + value;
-                        }
+                    //if (FormulaLbl.Contains("sin"))
+                    //{
+                    //    if (value.Contains(")"))
+                    //    {
+                    //        value = value.Remove(value.Length - 1);
+                    //        FormulaLbl = FormulaLbl.Remove(FormulaLbl.Length - 1) + ")";
+                    //    }
+                    //    else if(!value.Contains(")"))
+                    //    {
+                    //        FormulaLbl = FormulaLbl.Remove(FormulaLbl.Length - 1) + value + ")";
+                    //    }
+                    //    else
+                    //    {
+                    //        FormulaLbl = FormulaLbl + value;
+                    //    }
                         
-                    }
-                    else
-                    {
+                    //}
+                    //else
+                    //{
                         FormulaLbl = FormulaLbl + value;
-                    }
+                    //}
                     
                     
                     break;

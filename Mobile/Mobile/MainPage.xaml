@@ -2,20 +2,22 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Mobile"
-             x:Class="Mobile.MainPage" BackgroundColor="DodgerBlue" BindingContext="CalculationViewModel">
+             x:Class="Mobile.MainPage" BackgroundColor="Black" BindingContext="CalculationViewModel">
 
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="BtnStyle" TargetType="Button">
-                <Setter Property="TextColor" Value="Green"/>
+                <Setter Property="TextColor" Value="DarkGoldenrod"/>
                 <Setter Property="CornerRadius" Value="20"/>
                 <Setter Property="BackgroundColor" Value="Black"/>
-                <Setter Property="FontAttributes" Value="Italic"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BorderColor" Value="DarkGoldenrod"/>
+                <Setter Property="BorderWidth" Value="2"/>
             </Style>
             <Style x:Key="EqualBtnStyle" TargetType="Button">
                 <Setter Property="TextColor" Value="Black"/>
                 <Setter Property="CornerRadius" Value="20"/>
-                <Setter Property="BackgroundColor" Value="Green"/>
+                <Setter Property="BackgroundColor" Value="DarkGoldenrod"/>
                 <Setter Property="FontAttributes" Value="Italic"/>
             </Style>
             <Style x:Key="AllClearBtnStyle" TargetType="Button">
@@ -36,8 +38,8 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Switch x:Name="SwitchKeyboard" Grid.Row="0" Grid.Column="0" FlowDirection="LeftToRight" OnColor="Green" Toggled="SwitchKeyboard_OnToggled"></Switch>
-                <Label Grid.Row="0" Grid.Column="1" Text="Scientific" x:Name="ScientificKeyboardLbl" />
+                <Switch x:Name="SwitchKeyboard" Grid.Row="0" Grid.Column="0" FlowDirection="LeftToRight" OnColor="DarkGoldenrod"  Toggled="SwitchKeyboard_OnToggled"></Switch>
+                <Label Grid.Row="0" Grid.Column="1" Text="Scientific" x:Name="ScientificKeyboardLbl" TextColor="DarkGoldenrod" />
                 
             </Grid>
         </StackLayout>
@@ -51,9 +53,9 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Label Grid.Row="0" Grid.Column="0" TextColor="Green"  FontSize="48" Text="{Binding Result, Mode=TwoWay, UpdateSourceEventName=PropertyChanged}" BackgroundColor="Black"/>
+                <Label Grid.Row="0" Grid.Column="0" TextColor="DarkGoldenrod"  FontSize="48" Text="{Binding Result, Mode=TwoWay, UpdateSourceEventName=PropertyChanged}" BackgroundColor="Black"/>
                 <Label Grid.Row="1" Grid.Column="0" BackgroundColor="White" Text="{Binding FormulaLbl, Mode=TwoWay, UpdateSourceEventName=PropertyChanged}" TextColor="Black"/>
-                <StackLayout Grid.Row="2" Grid.Column="0" x:Name="SimpleKeyboardPanel" BackgroundColor="DodgerBlue" VerticalOptions="StartAndExpand">
+                <StackLayout Grid.Row="2" Grid.Column="0" x:Name="SimpleKeyboardPanel" BackgroundColor="Black" VerticalOptions="StartAndExpand">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
@@ -103,9 +105,9 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Label Grid.Row="0" Grid.Column="0" TextColor="Green"  FontSize="48" Text="{Binding Result, Mode=TwoWay, UpdateSourceEventName=PropertyChanged}" BackgroundColor="Black"/>
+                <Label Grid.Row="0" Grid.Column="0" TextColor="DarkGoldenrod"  FontSize="48" Text="{Binding Result, Mode=TwoWay, UpdateSourceEventName=PropertyChanged}" BackgroundColor="Black"/>
                 <Label Grid.Row="1" Grid.Column="0" BackgroundColor="White" Text="{Binding FormulaLbl, Mode=TwoWay, UpdateSourceEventName=PropertyChanged}" TextColor="Black"/>
-                <StackLayout Grid.Row="2" Grid.Column="0" x:Name="ScieKeyboardPanel" BackgroundColor="DodgerBlue" VerticalOptions="StartAndExpand">
+                <StackLayout Grid.Row="2" Grid.Column="0" x:Name="ScieKeyboardPanel" BackgroundColor="Black" VerticalOptions="StartAndExpand">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
@@ -162,10 +164,11 @@
                         <Button x:Name="ScieDividedBtn" Style="{StaticResource BtnStyle}" Text="/" Grid.Row="1" Grid.Column="3" Clicked="ScieDividedBtn_OnClicked" />
                         <Button x:Name="ScieMultipleBtn" Style="{StaticResource BtnStyle}" Text="*" Grid.Row="2" Grid.Column="3" Clicked="ScieMultipleBtn_OnClicked" />
                         <Button x:Name="ScieMinusBtn" Style="{StaticResource BtnStyle}" Text="-" Grid.Row="3" Grid.Column="3" Clicked="ScieMinusBtn_OnClicked" />
-                        <Button x:Name="SciePlusBtn" Style="{StaticResource BtnStyle}" Text="+" Grid.Row="4" Grid.Column="3" Clicked="SciePlusBtn_OnClicked" />
+                        <Button x:Name="SciePlusBtn" Style="{StaticResource BtnStyle}" Text="+" Grid.RowSpan="3" Grid.Row="5" Grid.Column="3" Clicked="SciePlusBtn_OnClicked" />
 
-                        <Button x:Name="ScieEqualBtn" Style="{StaticResource EqualBtnStyle}" Text="=" Grid.Row="3" Grid.Column="4" Clicked="ScieEqualBtn_OnClicked" />
-                        <Button x:Name="ScieAllClearBtn" Style="{StaticResource AllClearBtnStyle}" Text="AC" Grid.Row="4" Grid.Column="4" Clicked="ScieAllClearBtn_OnClicked" />
+                        <Button x:Name="ScieAllClearBtn" Style="{StaticResource AllClearBtnStyle}" Text="AC" Grid.Row="3" Grid.Column="4" Clicked="ScieAllClearBtn_OnClicked" />
+                        <Button x:Name="ScieEqualBtn" Style="{StaticResource EqualBtnStyle}" Text="=" Grid.Row="5" Grid.RowSpan="3" Grid.Column="4" Clicked="ScieEqualBtn_OnClicked" />
+                        
                     </Grid>
                 </StackLayout>
             </Grid>
